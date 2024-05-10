@@ -14,6 +14,12 @@
 - в доработке
 
 ## (5-11)/Teamhost
+
+## Если не открывеются то вот ссылки рабочие
+### TeamHost
+- ссылка [TeamHost-Architecture](https://github.com/foreverestBulat/TeamHost-Architecture) 
+- ссылка [TeamHost.WEB](https://github.com/foreverestBulat/TeamHost.WEB)
+
 - архитектура в Teamhost(5-11)/TeamHost-Architecture
 - Web в Teamhost(5-11)/TeamHost.WEB/TeamHost
 - они разделены так я создал TeamHost.WEB по другому пути у себя на компьюторе, а в решении WEB использую как ссылку на проект
