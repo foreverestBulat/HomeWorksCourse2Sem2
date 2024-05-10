@@ -15,7 +15,7 @@
 
 ## (5-11)/Teamhost
 
-## Если не открывеются то вот ссылки рабочие
+## Если не открываются то вот ссылки рабочие
 ### TeamHost
 - ссылка [TeamHost-Architecture](https://github.com/foreverestBulat/TeamHost-Architecture) 
 - ссылка [TeamHost.WEB](https://github.com/foreverestBulat/TeamHost.WEB)
