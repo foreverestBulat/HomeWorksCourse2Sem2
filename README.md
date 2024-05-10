@@ -1,17 +1,13 @@
 # Домашние работы по ОРИСу 
 
-## 1/Pokemon
-- проект в папке Homework 1
-
-## 2/Pokemon
+## 1-2/Pokemon
+- Создан React App приложение, там используются компоненты и сделан сайт по покемонам, а также задеплоен
 ### Pokemons
 - ссылка на репозиторий [MyGitHub/Pokemons](https://github.com/foreverestBulat/Pokemons) 
 - Deploy [Pokemons](https://foreverestbulat.github.io/Pokemons/)
 
-## 3/Pokemon
-- в доработке
-## 4/Pokemon
-- в доработке
+## 3-4/Pokemon
+- Создан проект ASP.NET MVC API с своей реализацией API для покемонов
 
 ## (5-11)/Teamhost
 
