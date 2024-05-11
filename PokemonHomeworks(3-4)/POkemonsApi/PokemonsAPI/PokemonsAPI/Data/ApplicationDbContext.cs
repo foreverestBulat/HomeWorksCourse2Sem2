@@ -52,6 +52,30 @@ public class ApplicationDbContext : DbContext
         builder.Entity<PokemonDetails>()
             .HasMany(e => e.Abilities)
             .WithMany(e => e.PokemonsDetails);
+
+        builder.Entity<Ability>()
+            .Property(e => e.Color)
+            .IsRequired(false);
+
+        builder.Entity<Ability>()
+            .Property(e => e.TextColor)
+            .IsRequired(false);
+
+        builder.Entity<Move>()
+            .Property(e => e.Color)
+            .IsRequired(false);
+
+        builder.Entity<Move>()
+            .Property(e => e.TextColor)
+            .IsRequired(false);
+
+        builder.Entity<PokemonType>()
+            .Property(e => e.Color)
+            .IsRequired(false);
+
+        builder.Entity<PokemonType>()
+            .Property(e => e.TextColor)
+            .IsRequired(false);
     }
 
     public override int SaveChanges()

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using PokemonsAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,12 +11,23 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
     );
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AllowOrigin",
+        builder => builder.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

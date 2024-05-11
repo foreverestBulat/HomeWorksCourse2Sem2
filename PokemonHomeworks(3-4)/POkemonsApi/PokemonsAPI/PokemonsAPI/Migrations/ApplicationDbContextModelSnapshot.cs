@@ -90,7 +90,6 @@ namespace PokemonsAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -98,7 +97,6 @@ namespace PokemonsAPI.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("TextColor")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -115,7 +113,6 @@ namespace PokemonsAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -123,7 +120,6 @@ namespace PokemonsAPI.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("TextColor")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -227,7 +223,6 @@ namespace PokemonsAPI.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -235,7 +230,6 @@ namespace PokemonsAPI.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("TextColor")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
