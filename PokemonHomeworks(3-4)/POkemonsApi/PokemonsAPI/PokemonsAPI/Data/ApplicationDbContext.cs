@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using PokemonsAPI.Models;
+using PokemonsAPI.Services;
 using System.Reflection;
+//using FillData;
 
 namespace PokemonsAPI.Data;
 
@@ -10,7 +12,7 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
         : base(options)
     {
-
+        
     }
 
     public DbSet<Pokemon> Pokemons => Set<Pokemon>();
@@ -21,8 +23,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<PokemonType> PokemonTypes => Set<PokemonType>();
 
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
+    protected async override void OnModelCreating(ModelBuilder builder)
+    {        
         base.OnModelCreating(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         builder.Entity<Pokemon>()
@@ -75,6 +77,12 @@ public class ApplicationDbContext : DbContext
 
         builder.Entity<PokemonType>()
             .Property(e => e.TextColor)
+            .IsRequired(false);
+
+        builder.Entity<PokemonType>()
+            .HasMany(e => e.Moves)
+            .WithOne(e => e.Type)
+            .HasForeignKey("TypeId")
             .IsRequired(false);
     }
 

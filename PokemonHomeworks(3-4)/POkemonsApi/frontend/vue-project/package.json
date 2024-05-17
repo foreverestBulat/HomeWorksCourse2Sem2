@@ -12,10 +12,12 @@
     "axios": "^1.6.8",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "@babel/runtime": "^7.21.0",
+    "@babel/core": "^7.21.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.2.8"
+    "vite": "^5.2.11"
   }
 }

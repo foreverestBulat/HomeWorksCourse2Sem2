@@ -1,8 +1,10 @@
 <script setup>
     import Card from '../components/Card.vue';
+    import Search from '../components/Search.vue';
 </script>
 
 <template>
+    <Search @search-name="searchName"/>
     <div class="cards">
         <Card v-for="pokemon in pokemons" :pokemon="pokemon"/>
     </div>
@@ -13,13 +15,17 @@
     export default {
         data () {
             return {
+                search: null,
                 pokemons: []
             }
         },
         async mounted() {
-            this.pokemons = await getPokemons();
-            // console.log('------------------ASDASD');
-            // console.log(this.pokemons);
+            this.pokemons = await getPokemons(0, 20);
+        },
+        methods:{
+            async searchName(value) {
+                this.pokemons = await getPokemons(0, 20, value.name)
+            }
         }
     }
 </script>

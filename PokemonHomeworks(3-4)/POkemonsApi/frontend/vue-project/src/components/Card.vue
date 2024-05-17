@@ -11,9 +11,18 @@
                 <div class="number">#{{ pokemon.id }}</div>
             </div>
             <img :src="pokemon.image"/>
-            <div class="down">
-                <div v-for="type in types" :style="{ backgroundColor: type.color, color: type.textcolor }">
-                    <p>{{ type.name }}</p>
+            <div class="down" v-if="typesColors.length != 0">
+                <!-- <div v-for="type in pokemon.types">
+                    <p>{{ type }}</p>
+                </div> -->
+                <!-- :style="{ 'background-color': typesColors[0].color, 'color': typesColors[0].textcolor }" -->
+                <!-- <div :style="{ backgroundColor: typesColors[0].color, color: typesColors[0].textcolor }"> -->
+                
+                <div :style="{ backgroundColor: typesColors[0].color, color: typesColors[0].textcolor }">
+                    <p>{{ pokemon.types[0] }}</p>
+                </div>
+                <div v-if="pokemon.types.length > 1 && typesColors.length > 1" :style="{ backgroundColor: typesColors[1].color, color: typesColors[1].textcolor }">
+                    {{ pokemon.types[1] }}
                 </div>
             </div>
         </div>
@@ -25,7 +34,7 @@
     export default {
         data () {
             return {
-                types: [],
+                typesColors: [],
             }
         },
         props: {
@@ -36,7 +45,7 @@
         },
         mounted(){
             for(let i = 0; i < this.pokemon.types.length; i++){
-                this.types.push({
+                this.typesColors.push({
                     name: this.pokemon.types[i],
                     color: types[this.pokemon.types[i]][0],
                     textcolor: types[this.pokemon.types[i]][1]

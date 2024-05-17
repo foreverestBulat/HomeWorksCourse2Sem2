@@ -4,22 +4,37 @@
             <div class="vertical">
                 <div class="block-text">
                     <div class="text">Who are you looking for?</div>
-                </div>
-                <form>
-                    <div class="form">
-                        <input />
-                        <div class="vertical-btn">
-                            <button class="button"> GO </button>
-                        </div>
+                </div>                
+                <div class="form">
+                    <input 
+                        :value="search"
+                        @input="searchName">
+                    <div class="vertical-btn">
+                        <button class="button"> GO </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-
+    export default {
+        data () {
+            return {
+                search: null
+            }
+        },
+        methods: {
+            async searchName(event){
+                this.search = event.target.value;
+                this.$emit('search-name', {
+                    name: this.search,
+                    method: 'searchName'
+                })
+            }
+        }
+    }
 </script>
 
 <style>

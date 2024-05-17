@@ -7,4 +7,5 @@ public class PokemonType : Base
     public string TextColor { get; set; }
     public ICollection<Pokemon> Pokemons { get; set; }
     public ICollection<PokemonDetails>? PokemonsDetails { get; set; }
+    public virtual ICollection<Move>? Moves { get; set; }
 }

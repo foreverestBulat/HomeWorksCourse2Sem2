@@ -1,11 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import Search from './components/Search.vue';
 </script>
 
-<template>
-  <Search />
+<template>  
   <RouterView />
 </template>
 

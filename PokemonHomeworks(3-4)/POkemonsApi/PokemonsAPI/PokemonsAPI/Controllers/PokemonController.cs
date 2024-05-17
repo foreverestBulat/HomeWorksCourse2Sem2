@@ -17,13 +17,46 @@ public class PokemonController : ApiControllerBase
     }
 
     [EnableCors("AllowOrigin")]
-    //[EnableCors("http://localhost:5173")]
+    [HttpGet("Test")]
+    public string Test()
+    {
+        return "test";
+    }
+
+    [EnableCors("AllowOrigin")]
+    [HttpGet("FillData")]
+    public async Task<bool> FillData()
+    {
+        if (_context.Pokemons.Count() > 0) return true;
+        await _context.Seed();
+        return false;
+    }
+
+
+    [EnableCors("AllowOrigin")]
     [HttpGet("Pokemons")]
-    public List<ModelPokemon> GetListPokemons(int index, int count)
+    public List<ModelPokemon> GetListPokemons(int index, int count, string name=null)
     {
         var pokemons = new List<ModelPokemon>();
-        foreach (var pokemonEntity in _context.Pokemons.Include(e => e.Types).Skip(index).Take(count))
-            pokemons.Add(new ModelPokemon(pokemonEntity));
+        if (name is null)
+            foreach (var pokemonEntity in 
+                _context
+                .Pokemons
+                .Include(e => e.Types)
+                .OrderBy(e => e.Id)
+                .Skip(index)
+                .Take(count))
+                pokemons.Add(new ModelPokemon(pokemonEntity));
+        else
+            foreach (var pokemonEntity in 
+                _context
+                .Pokemons
+                .Where(e => e.Name.Contains(name))
+                .Include(e => e.Types)
+                .OrderBy(e => e.Id)
+                .Skip(index)
+                .Take(count))
+                pokemons.Add(new ModelPokemon(pokemonEntity));
         return pokemons;
     }
 
@@ -43,6 +76,7 @@ public class PokemonController : ApiControllerBase
         }
     }
 
+    [EnableCors("AllowOrigin")]
     [HttpGet("Pokemon")]
     public async Task<ModelPokemonDetails?> GetPokemon(int index)
     {
@@ -66,7 +100,7 @@ public class PokemonController : ApiControllerBase
         public int Weight { get; set; }
         public string Image { get; set; }
         public virtual List<string> Types { get; set; }
-        public virtual List<string> Moves { get; set; }
+        public virtual List<MoveName> Moves { get; set; }
         public virtual List<string> Abilities { get; set; }
         public int Hp { get; set; }
         public int Attack { get; set; }
@@ -83,7 +117,8 @@ public class PokemonController : ApiControllerBase
             Weight = details.Weight;
             Image = details.Pokemon.Image;
             Types = details.Types?.Select(t => t.Name).ToList();
-            Moves = details.Moves?.Select(t => t.Name).ToList();
+            Moves = details.Moves?.Select(t => new MoveName(t.Name, t.Type?.Name )).ToList();
+             
             Abilities = details.Abilities?.Select(t => t.Name).ToList();
             Hp = details.Stats.Hp;
             Attack = details.Stats.Attack;
@@ -92,5 +127,7 @@ public class PokemonController : ApiControllerBase
             SpecialDefense = details.Stats.SpecialDefense;
             Speed = details.Stats.Speed;
         }
+
+       public record class MoveName(string Name, string TypeName);
     }
 }

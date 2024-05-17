@@ -1,15 +1,20 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using PokemonsAPI.Data;
 
-var builder = WebApplication.CreateBuilder(args);
+//Apply.Start(null);
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(
-        builder.Configuration.GetConnectionString("PostgreSQLConnection"),
-        builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
-    );
+        builder.Configuration.GetConnectionString("PostgreSQLConnection")));
+
+//builder.Services.AddCors(policy => policy.AddPolicy("default", opt =>
+//{
+//    opt.AllowAnyHeader();
+//    opt.AllowCredentials();
+//    opt.AllowAnyMethod();
+//    opt.SetIsOriginAllowed(_ => true);
+//}));
 
 builder.Services.AddCors(options =>
 {
@@ -26,6 +31,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+Console.WriteLine("Run");
 var app = builder.Build();
 app.UseCors();
 

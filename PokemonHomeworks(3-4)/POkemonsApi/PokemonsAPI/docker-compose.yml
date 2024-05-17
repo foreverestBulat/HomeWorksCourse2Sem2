@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY-}pokemonsapi
+    build:
+      context: .
+      dockerfile: PokemonsAPI/Dockerfile
+
+  client:
+    image: client-pokemon
+    build:
+      context: ../frontend/vue-project
+      dockerfile: Dockerfile
+
+  proxy:
+    image: nginx:mainline
+    

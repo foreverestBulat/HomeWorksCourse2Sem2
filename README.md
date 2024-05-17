@@ -8,6 +8,12 @@
 
 ## 3-4/Pokemon
 - Создан проект ASP.NET MVC API с своей реализацией API для покемонов
+- Создан Frontend на Vue js и реалтзован
+- PokeAPI используется для заполнения бд
+- Созданы Dockerfile для API, Frontend и nginx
+- Создан docker-compose с контейнерами для API, Frontend и nginx
+- тестирование: запуская docker-compose работает Front и API, но я не сумел сделать nginx для привязки между ними
+- ![Запуск docker-compose](DockerPokemons.PNG)
 
 ## (5-11)/Teamhost
 

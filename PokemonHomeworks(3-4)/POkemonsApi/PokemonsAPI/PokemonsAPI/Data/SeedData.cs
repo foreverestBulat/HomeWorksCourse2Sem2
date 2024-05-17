@@ -7,8 +7,9 @@ public static class SeedData
 {
     public static void PopulateDb(IApplicationBuilder app)
     {
-        using var serviceScope = app.ApplicationServices.CreateScope();
-        AddInitialData(serviceScope.ServiceProvider.GetService<ApplicationDbContext>()!);
+        
+        //using var serviceScope = app.ApplicationServices.CreateScope();
+        //AddInitialData(serviceScope.ServiceProvider.GetService<ApplicationDbContext>()!);
     }
 
     public async static void AddInitialData(ApplicationDbContext context)

@@ -1,9 +1,34 @@
 <script setup>
-    import Stats from '../components/Stats.vue'
+    import PokeMain from '../components/PokeMain.vue';
+    import Breeding from '../components/Breeding.vue';
+    import Loading from '../components/Loading.vue';
+    import Moves from '../components/Moves.vue';
+    import Abilities from '../components/Abilities.vue';
+    import { RouterLink } from 'vue-router';
 </script>
 
-<template>
-    <Stats :pokemon="details" percent="40" color="#000000"/>
+<template>    
+    <div class="nav back">
+        <div class="btn-back">
+            <RouterLink to="/pokemons">
+                back
+            </RouterLink>
+        </div>
+    </div>    
+
+    <div class="page-pokemon">
+        <div v-if="details !== null" class="pokemon">
+            <PokeMain :pokemon="details" percent="40" color="#000000"/>
+            <Breeding :height="details.height" :weight="details.weight"/>
+            <Moves :moves="details.moves"/>
+            <Abilities :abilities="details.abilities"/>
+        </div>
+        <div v-else>
+            <Loading />
+        </div>
+    </div>
+    
+    
 </template>
 
 <script>
@@ -20,7 +45,8 @@
                 immediate: true,
                 async handler(id) {
                     this.details = await getPokemon(id);
-                    console.log(this.details);
+                    console.log('DETAILS ---------------');
+                    console.log(this.details.abilities);
                 }
             }
         }

@@ -3,51 +3,55 @@
 </script>
 
 <template>
-
-    <div class="main-state child">
-        <div class="name-id-types">
-            <div class="name-id">
-                <div class="id">#{{ pokemon.id }}</div>
-                <div class="name">{{ pokemon.name }}</div>
-            </div>
-            <div>
-                <div v-for="type in types" :style="{ backgroundColor: type.color, color: type.textcolor }">
-                    <p>{{ type.name }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="stats-image">
+    <div class="stats">
+        <div>
+            <h1>hp</h1>
             <ProgressBar
                 :color="hp"
                 :percent="pokemon.hp"/>
+        </div>
+        <div>
+            <h1>attack</h1>          
             <ProgressBar
                 :color="attack"
                 :percent="pokemon.attack"/>
+        </div>
+        <div>
+            <h1>defense</h1>
             <ProgressBar
                 :color="defense"
                 :percent="pokemon.defense"/>
+        </div>
+        <div>
+            <h1>special-attack</h1>
             <ProgressBar
                 :color="specialAttack"
                 :percent="pokemon.specialAttack"/>
+        </div>
+        <div>
+            <h1>special-defense</h1>
             <ProgressBar
                 :color="specialDefense"
                 :percent="pokemon.specialDefense"/>
+        </div>
+        <div>
+            <h1>speed</h1>
             <ProgressBar
                 :color="speed"
                 :percent="pokemon.speed"/>
-            <div>
-                <img :src="pokemon.image"/>
-            </div>
         </div>
-    </div>
-    <div class="stats">
-        <!-- :color="" -->
-        
+            
     </div>
 </template>
 
 <script>
     export default {
+        props: {
+            pokemon: {
+                type: Object,
+                default: null
+            }
+        },
         data () {
             return {
                 types: [],
@@ -62,16 +66,6 @@
                 percent: 30,
             }
         },
-        props: {
-            attackPer: {
-                type: Number,
-                default: 30
-            },
-            pokemon: {
-                type: Object,
-                default: null
-            }
-        },
         mounted(){
             for(let i = 0; i < this.pokemon.types.length; i++){
                 this.types.push({
@@ -80,6 +74,7 @@
                     textcolor: types[this.pokemon.types[i]][1]
                 });
             }
+            console.log(this.pokemon)
         }
     }
 

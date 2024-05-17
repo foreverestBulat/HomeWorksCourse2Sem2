@@ -1,13 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PokemonsView from '../views/PokemonsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/',
+      name: 'name',
+      component: () => import('../views/MainView.vue')
+    },
+    {
       path: '/pokemons',
       name: 'Pokemons',
-      component: PokemonsView
+      component: () => import('../views/PokemonsView.vue')
     },
     {
       path: '/pokemon/:id',
