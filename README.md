@@ -1,12 +1,12 @@
 # Домашние работы по ОРИСу 
 
-## 1-2/Pokemon
+## (1-2)/Pokemon
 - Создан React App приложение, там используются компоненты и сделан сайт по покемонам, а также задеплоен
 ### Pokemons
 - ссылка на репозиторий [MyGitHub/Pokemons](https://github.com/foreverestBulat/Pokemons) 
 - Deploy [Pokemons](https://foreverestbulat.github.io/Pokemons/)
 
-## 3-4/Pokemon
+## (3-4)/Pokemon
 - Создан проект ASP.NET MVC API с своей реализацией API для покемонов
 - Создан Frontend на Vue js и реалтзован
 - PokeAPI используется для заполнения бд
@@ -99,11 +99,11 @@
             - для интерфейса IGenericRepository в App добавил новый метод GetFromCacheById, который реализован в Persistance в GenericRepository
             - GetFromCacheById
                 - Он берет данные из кэша по id, если нашел то возращает, иначе если его нет то ищет в бд если нашел в бд то его добавляет в кэш и возращает его
-        - Тестирование
-            - как я понял у меня почему то Windows 10 Pro не совместим с docker, поэтому никак не проверял как работает.
 
 - Homework 11
     - Deploy
+    - Создал Dockerfile для backend и postgres
+    - Создал docker-compose
 
 
 - Также были домашки
